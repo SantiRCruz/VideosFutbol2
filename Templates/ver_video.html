@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+    <h1>Ver detalle del Video</h1>
+    
+    <p>{{detalle.id}}</p>
+    <p>{{detalle.nombreVideo}}</p>
+    <p>{{detalle.descripcion}}</p>
+    <p><video src="/media/{{detalle.videoArchivo}}" alt="" width="200px" height="200px" loop autoplay controls muted ></p>
+    <p>{{detalle.fechaPublicacion}}</p>
+    <p>{{detalle.Jugador}}</p>
+    <p>{{detalle.Equipo}}</p>
+    <p>{{detalle.marca}}</p>
+      
+        <P>
+        {% for c in detalle.categorias.all %}
+            {{c}}
+            <br>
+        {% endfor %}
+        </P>
+
+    <a href="{% url 'listar_videos_view' %}" class="btn btn-primary">Regresar a la lista de Videos</a>
+{% endblock contenido %}

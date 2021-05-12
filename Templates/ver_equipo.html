@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+    <h1>Ver detalle del Equipo</h1>
+    
+    <p>{{detalle.id}}</p>
+    <p>{{detalle.nombreEquipo}}</p>
+    <p><img src="/media/{{detalle.Escudo}}" alt="" width="200px" height="200px" ></p>
+    
+      
+
+    <a href="{% url 'listar_equipos_view' %}" class="btn btn-primary">Regresar a la lista de Equipos</a>
+{% endblock contenido %}

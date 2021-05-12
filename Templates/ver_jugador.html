@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+    <h1>Ver detalle del Jugadores</h1>
+    
+    <p>{{detalle.id}}</p>
+    <p>{{detalle.nombre}}</p>
+    <p><img src="/media/{{detalle.foto}}" alt="" width="200px" height="200px" ></p>
+    
+      
+
+    <a href="{% url 'listar_jugadores_view' %}" class="btn btn-primary">Regresar a la lista de Jugadores</a>
+{% endblock contenido %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+<h1>Lista de jugadores</h1>
+<br>
+<a href="{% url 'agregar_jugador' %}" class="btn btn-primary">Agregar un Jugador</a>
+<br>
+<br>
+    <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">nombre Del jugador</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for p in jugadores  %}
+        <tr>
+          <th scope="row">{{p.id}}</th>
+          <td>{{p.nombre}}</td>
+          <td><img src="/media/{{p.foto}}" alt="" width="130px" height="120px"></td>
+          <td>
+            <a href="{% url 'ver_jugador_view' id_jugador=p.id %}" class="btn btn-info">Ver</a>
+            <a href="{% url 'editar_jugador_view' id_jugador=p.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'eliminar_jugador_view' id_jugador=p.id %}" class="btn btn-danger">Eliminar</a>
+          </td>
+        </tr>
+        {% endfor %}
+          
+{% endblock contenido %}
