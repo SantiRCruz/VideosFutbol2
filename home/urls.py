@@ -31,6 +31,11 @@ urlpatterns = [
     path('ver_categoria/<int:id_categoria>',ver_categoria_view, name = 'ver_categoria_view'),
     path('eliminar_categoria/<int:id_categoria>',eliminar_categoria_view, name = 'eliminar_categoria_view'),
     path('editar_categoria/<int:id_categoria>',editar_categoria_view, name = 'editar_categoria_view'),
+
+    path('login/',login_view, name = 'login_view'),
+    path('logout/',logout_view, name = 'logout_view'),
+
+    path('register/',register_view,name='register_view'),
 ]
    
 

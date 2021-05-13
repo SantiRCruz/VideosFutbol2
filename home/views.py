@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.models import User
 from .forms import *
 from .models import *
+
+
 
 # Create your views here.
 def inicio_view(request):
@@ -179,3 +183,42 @@ def editar_categoria_view(request,id_categoria):
         formulario = agregar_categoria_form(instance=objeto)
 
     return render(request,'agregar_categoria.html',locals())     
+
+def login_view(request):
+    usu = ""
+    cla = ""
+    if request.method == 'POST':
+        formulario = login_form(request.POST)
+        if formulario.is_valid():
+            usu = formulario.cleaned_data['usuario'] 
+            cla = formulario.cleaned_data['clave'] 
+            usuario = authenticate(username=usu, password=cla)
+            if usuario is not None and usuario.is_active:
+                login(request,usuario)
+                return redirect('/')
+            else:
+                msj = 'usuario o clave incorrectos'  
+    else:#GET
+        formulario = login_form()
+    return render(request,'login.html',locals())        
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login/') 
+
+def register_view(request):
+    formulario = register_form()
+    if request.method == 'POST':
+        formulario = register_form(request.POST)
+        if formulario.is_valid():
+            usuario = formulario.cleaned_data['username']
+            correo = formulario.cleaned_data['email'] 
+            password_1 = formulario.cleaned_data['password_1']
+            password_2 = formulario.cleaned_data['password_2']
+            u =  User.objects.create_user(username=usuario,email=correo,password=password_1)
+            u.save()
+            return render(request, 'tanks_for_register.html',locals())
+        else:
+            return render(request, 'register.html',locals())
+    return render(request, 'register.html',locals())                
+                   

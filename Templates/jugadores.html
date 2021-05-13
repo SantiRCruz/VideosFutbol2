@@ -4,7 +4,9 @@
 {% block contenido %}
 <h1>Lista de jugadores</h1>
 <br>
+{% if request.user.is_authenticated and request.user.is_superuser %}
 <a href="{% url 'agregar_jugador' %}" class="btn btn-primary">Agregar un Jugador</a>
+{% endif %}
 <br>
 <br>
     <table class="table table-dark table-hover">
@@ -24,8 +26,10 @@
           <td><img src="/media/{{p.foto}}" alt="" width="130px" height="120px"></td>
           <td>
             <a href="{% url 'ver_jugador_view' id_jugador=p.id %}" class="btn btn-info">Ver</a>
+            {% if request.user.is_authenticated and request.user.is_superuser %}
             <a href="{% url 'editar_jugador_view' id_jugador=p.id %}" class="btn btn-warning">Editar</a>
             <a href="{% url 'eliminar_jugador_view' id_jugador=p.id %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}

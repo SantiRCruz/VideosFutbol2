@@ -4,7 +4,9 @@
 {% block contenido %}
 <h1>Lista de Videos</h1>
 <br>
+{% if request.user.is_authenticated and request.user.is_superuser %}
 <a href="{% url 'agregar_video' %}" class="btn btn-primary">Agregar un Video</a>
+{% endif %}
 <br>
 <br>
 <table class="table table-dark table-hover">
@@ -32,8 +34,10 @@
       <td>{{p.Equipo}}</td>
       <td> 
         <a href="{% url 'ver_video_view' id_video=p.id %}" class="btn btn-info">Ver</a>
+        {% if request.user.is_authenticated and request.user.is_superuser %}
         <a href="{% url 'editar_video_view' id_video=p.id %}" class="btn btn-warning">Editar</a>
         <a href="{% url 'eliminar_video_view' id_video=p.id %}" class="btn btn-danger">Eliminar</a>
+        {% endif %}
        
       </td>
     </tr>
