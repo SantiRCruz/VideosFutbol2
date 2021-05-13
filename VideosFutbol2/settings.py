@@ -153,7 +153,7 @@ STATIC_URL = '/static/'
 # ]
 
 #produccion
-STATIC_ROOT = "static"
+STATIC_ROOT = "Static"
 
 #servidor de medios
 MEDIA_URL = '/media/'
