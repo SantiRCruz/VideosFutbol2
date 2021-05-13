@@ -26,10 +26,10 @@ SECRET_KEY = 'ff-w1yg508()0yrtsbc-z&7o8maxtnpu7lx0$7*-_ggxgr*@y9'
 DEBUG = True
 
 #localhost xampp
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
 #herokuserver
-#ALLOWED_HOSTS = ['videos-futbol.herokuapp.com']
+ALLOWED_HOSTS = ['videos-futbol.herokuapp.com']
 
 
 # Application definition
@@ -84,29 +84,29 @@ WSGI_APPLICATION = 'VideosFutbol2.wsgi.application'
 
 
 #localhost
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'videosfutbol',
-        'USER': 'root',
-        'PASSWORD':'',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME':'videosfutbol',
+#         'USER': 'root',
+#         'PASSWORD':'',
+#         'HOST':'127.0.0.1',
+#         'PORT':'3306',
+#     }
+# }
 
 
 #servidor heroku
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME':'d6ub10a6begdj8',
-#         'USER': 'fizvblqlsbczfn',
-#         'PASSWORD':'94a94bc73b9ddf06fc3adfe70c889d8537c020f728fe555d3907f1873bb7fc40',
-#         'HOST':'ec2-54-163-254-204.compute-1.amazonaws.com',
-#         'PORT':'5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'d6ub10a6begdj8',
+        'USER': 'fizvblqlsbczfn',
+        'PASSWORD':'94a94bc73b9ddf06fc3adfe70c889d8537c020f728fe555d3907f1873bb7fc40',
+        'HOST':'ec2-54-163-254-204.compute-1.amazonaws.com',
+        'PORT':'5432',
+    }
+}
 
 
 # Password validation
@@ -147,13 +147,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Desarrollo
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+# #Desarrollo
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
 
 #produccion
-#STATIC_ROOT = "Static"
+STATIC_ROOT = "Static"
 
 #servidor de medios
 MEDIA_URL = '/media/'
